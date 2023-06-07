@@ -1,0 +1,266 @@
+.body-full{
+    background-image: linear-gradient(to bottom right, #dbf8b1, #f7d5b1);
+    height:100vh;
+    overflow: hidden;
+    z-index: -1000;
+}
+.content{
+    width: 100%;
+    height: calc(100% - 60px);
+    align-items: center;
+    overflow-y: auto;
+    scrollbar-width: thin;
+}
+.content::-webkit-scrollbar {
+    width: 5px;
+}
+
+.content::-webkit-scrollbar-track {
+    border-radius: 5px;
+    background-color: transparent;
+}
+
+.content::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background: #a6a6a6;
+}
+
+.content::-webkit-scrollbar-thumb:hover {
+    background: #a6a6a6;
+}
+.form{
+    position: static;
+    overflow: hidden;
+    z-index: 1;
+}
+.aaaa{
+    position: relative;
+    background-color: rgb(239, 239, 239, 0.3);
+    border-radius: 30px;
+    overflow: auto;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+}
+.form-rotate{
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    overflow: hidden;
+    border-top-left-radius:30px;
+    border-top-right-radius:30px;
+    z-index: -1;
+
+}
+#rotate{
+     background-image: linear-gradient(to right, #f6f85d, #c8f090);
+     width:500px;
+     height:500px;
+     border-radius: 30% 70% 70% 30% / 30% 43% 57% 70% ;
+     z-index: -1;
+     position: absolute;
+     top :-200px;
+     left:50%;
+     transform: translate(-50%);
+     transition: 1s;
+}
+.form::before{
+    position: absolute;
+    top: 10px;
+    left: 55%;
+    width:20vh;
+    height:20vh;
+    content:'';
+    background-image: linear-gradient(to top right, #dbf8b1, #b5d38c);
+    border-radius: 50%;
+    z-index: -1;
+    animation: mos 10s ease-in-out 1s infinite alternate;
+}
+
+@keyframes mos{
+    0% {transform: translate(0, 0) rotate(0deg);}
+    100% { transform: translate(50px, 50px) rotate(360deg)}
+}
+
+.form::after{
+    position: absolute;
+    bottom: 20%;
+    right: 0%;
+    width:35vh;
+    height: 35vh;
+    content:'';
+    background-image: linear-gradient(to right bottom, #f5e4d1, #c2a17e);
+    border-radius: 30% 70% 32% 68% / 13% 15% 85% 87% ;
+    z-index: -1;
+    filter: blur(3px);
+    animation: backgroundanimation 15s ease-in-out infinite alternate;
+}
+
+@keyframes backgroundanimation{
+    0% {transform: translate(0, 0) rotate(0deg); border-radius: 30% 70% 70% 30% / 73% 50% 50% 27%  ;}
+    20% {transform: translate(-40px, 20px) rotate(70deg); border-radius: 86% 14% 100% 0% / 52% 43% 57% 48% }
+    40% {transform: translate(-20px, 40px) rotate(135deg); border-radius: 14% 86% 14% 86% / 85% 43% 57% 15% }
+    60% {transform: translate(-80px, 60px) rotate(360deg); border-radius: 3% 97% 81% 19% / 85% 43% 57% 15% }
+    80% {transform: translate(-60px, 20px) rotate(90deg); border-radius: 58% 42% 81% 19% / 85% 43% 57% 15% }
+    100% { transform: translate(-100px, 100px) rotate(180deg); border-radius: 67% 33% 13% 87% / 78% 18% 82% 22%}
+}
+
+.group{
+    width: 80%;
+    height:60px;
+    position: relative;
+    margin-bottom: 30px;
+    margin-right: 10%;
+    margin-left: 10%;
+    z-index: 1001;
+}
+.group i{
+    position:absolute;
+    top:45px;
+    left:10px;
+}
+.group span{
+    position:absolute;
+    top:45px;
+    right:10px;
+    transition: 0.5s;
+    display: block;
+    z-index: 1000;
+}
+
+.group label{
+    position:absolute;
+    top:45px;
+    left:40px;
+    transition: 0.5s;
+    z-index: -1;
+}
+.group .inputText{
+    margin-top:30px;
+    width:100%;
+    padding: 0 40px;
+    border-radius: 10px;
+    height:50px;
+    border:none;
+    outline: none;
+    background-color: rgb(255, 255, 255, 0.6);
+    z-index: 1000;
+}
+.inputText:focus + label,
+.inputText:not(:placeholder-shown) + label
+{
+    top:0;
+    left:40px;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: medium;
+}
+.inputText:valid{
+    border-bottom:3px solid #4a8053;
+}
+input[type='checkbox'] + label{
+    position: unset;
+}
+input[type='password']:focus + span{
+    display: block;
+}
+.btn{
+    width:80%;
+    border:none;
+    margin-top:20px;
+    margin-right: 10%;
+    margin-left: 10%;
+    margin-bottom: 20px;
+    padding:15px 0;
+    background-image: linear-gradient(to right, #b0e9bc, #dfdc43);
+    color:#fff;
+}
+
+.option{
+    position: absolute;
+    bottom:10px;
+    width:70%;
+    left:50%;
+    transform: translate(-50%);
+}
+
+.changeType{
+    width:50%;
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition:1s;
+    height:40px;
+}
+.bg-active{
+    transition: 1.5s;
+    background-color: #96c0a9;
+    height:40px;
+    z-index: -1;
+    border-radius: 20px;
+}
+
+
+#login{
+    z-index: 1;
+    animation:nextContent 1s ease-in-out 1 forwards
+}
+#register{
+    z-index: 1;
+    animation:nextContent 1s ease-in-out 1 forwards
+}
+@keyframes nextContent{
+    from{
+        transform: translate(100%,0px);
+    }to{
+        transform: translate(0,0px);
+    }
+}
+.login-img{
+    z-index: 1;
+}
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 768px){
+    .login-img{
+        display: none;
+    }
+  }
+
+  body{
+    max-width: 100vw;
+    max-height: 100vh;
+    overflow: hidden;
+  }
+  .hidden {
+    display: none;
+  }
+
+  .container::before {
+    content: '';
+    width: 70vmax;
+    height: 70vmax;
+    position: absolute;
+    background: rgba(0,255,255,.07);
+    left: -20vmin;
+    top: -20vmin;
+    animation: morph 10s linear infinite alternate,spin 16s linear infinite;
+    z-index: 1;
+    will-change: border-radius,transform;
+    transform-origin: 40% 55%;
+    pointer-events: none;
+}
+@keyframes morph{
+  0% {border-radius:40% 60% 60% 40%/70% 30%}
+  25% {border-radius:40% 60% 60% 40%/60% 60% 70% 30%}
+  50% {border-radius:60% 60% 30% 40%/70% 60% 60% 30%}
+  70% {border-radius:80% 60% 60% 40%/10% 30% 60% 60%}
+  00% {border-radius:40% 60% 30% 40%/70% 30% 30% 60%}
+  to {border-radius:40% 60%}
+}
+@keyframes spin{
+  to {transform: rotate(1turn)}
+  }

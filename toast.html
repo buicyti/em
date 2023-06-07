@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toast</title>
+    
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/bootstrap/bootstrap-icons/bootstrap-icons.css">
+    <script src="assets/jquery/jquery-3.6.0.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</head>
+<body>
+
+    <button id="myBtn">sdsdsd</button>
+    <input type="color" class="form-control form-control-color" value="#44B930" title="Choose your color">
+
+    <div class="toast-container position-absolute bottom-0 end-0 p-3">
+        <div class="toast" id="myToast" data-bs-animation="true" data-bs-autohide="true" data-bs-delay="10000">
+        <div class="toast-header">
+            <strong class="me-auto"><i class="bi-gift-fill"></i> We miss you!</strong>
+            <small>10 mins ago</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+        </div>
+        <div class="toast-body">
+            It's been a long time since you visited us. We've something special for you. <a href="#">Click here!</a>
+        </div>
+    </div></div>
+    <div class="toast" id="myToast" data-bs-animation="true" data-bs-autohide="true" data-bs-delay="10000">
+        <div class="toast-header">
+            <strong class="me-auto"><i class="bi-gift-fill"></i> We miss you!</strong>
+            <small>10 mins ago</small>
+            <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+        </div>
+        <div class="toast-body">
+            It's been a long time since you visited us. We've something special for you. <a href="#">Click here!</a>
+        </div>
+    </div>
+
+
+
+
+    <script>
+        $(document).ready(function(){
+            $("#myBtn").click(function(){
+                $("#myToast").toast("show");
+            });
+        });
+        </script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Operations on Two Multi-Select Lists</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/bootstrap/bootstrap-icons/bootstrap-icons.css">
+    <script src="assets/jquery/jquery-3.6.0.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script>
+        $( function() {
+          $( "droptrue" ).sortable({
+            connectWith: "ul"
+          });
+       
+          $( "dropfalse" ).sortable({
+            connectWith: "ul",
+            dropOnEmpty: false
+          });
+       
+          $( "#sortable1, #sortable2, #sortable3" ).disableSelection();
+        } );
+        </script>
+</head>
+
+<body>
+    <div class="panel panel-default mt-5" style="background-color:#fff; width: 800px; margin-left:15%;">
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-sm-5">
+                    <select name="from" id="multiselect_left" class="form-control" size="25" multiple="multiple">
+                        <optgroup label="Mandatory Fields">
+                            <option value=1>Name</option>
+                            <option value=2>Email</option>
+                            <option value=3>Father Name</option>
+                            <option value=4> Emergency Contact Number</option>
+                            <option value=5> permanent Address</option>
+                            <option value=6> Date of Birth</option>
+                            <option value=7> Gender</option>
+                            <option value=1>Name</option>
+                            <option value=2>Email</option>
+                            <option value=3>Father Name</option>
+                            <option value=4> Emergency Contact Number</option>
+                            <option value=5> permanent Address</option>
+                            <option value=6> Date of Birth</option>
+                            <option value=7> Gender</option>
+                            <option value=1>Name</option>
+                            <option value=2>Email</option>
+                            <option value=3>Father Name</option>
+                            <option value=4> Emergency Contact Number</option>
+                            <option value=5> permanent Address</option>
+                            <option value=6> Date of Birth</option>
+                            <option value=7> Gender</option>
+                        </optgroup>
+                        <optgroup label="Optional Fields">
+                            <option value=8>Marital Status</option>
+                            <option value=9>Mother Name</option>
+                            <option value=10>Spouse Name</option>
+                            <option value=11>Highest Education</option>
+                        </optgroup>
+                    </select>
+                </div>
+                <div class="col-sm-1 d-flex flex-column justify-content-center">
+
+                    <button type="button" id="btn_rightAll" class="btn btn-secondary mb-4"><i
+                            class="bi bi-skip-end-fill"></i></button>
+                    <button type="button" id="multiselect_move_up" class="btn btn-secondary mb-1"><i
+                            class="bi bi-caret-up-fill"></i></button>
+                    <button type="button" id="multiselect_move_down" class="btn btn-secondary mb-1"><i
+                            class="bi bi-caret-down-fill"></i></button>
+                    <button type="button" id="btn_leftSelected" class="btn btn-secondary mb-1"><i
+                            class="bi bi-caret-left-fill"></i></button>
+                    <button type="button" id="btn_rightSelected" class="btn btn-secondary"><i
+                            class="bi bi-caret-right-fill"></i></button>
+                    <button type="button" id="btn_leftAll" class="btn btn-secondary mt-4"><i
+                            class="bi bi-skip-start-fill"></i></button>
+
+                </div>
+                <div class="col-sm-5">
+                    <select name="from" id="multiselect_right" class="form-control" size="25">
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    $(function () {
+        $('#btn_leftSelected').click(function () {
+            // pass id select lists as parameters
+            moveItemsToLeft('#multiselect_left', '#multiselect_right');
+        });
+        $('#btn_rightSelected').on('click', function () {
+            moveItemsToRight('#multiselect_left', '#multiselect_right');
+        });
+        $('#btn_leftAll').on('click', function () {
+            moveAllItemsToSource('#multiselect_left', '#multiselect_right');
+        });
+
+        $('#btn_rightAll').on('click', function () {
+            moveAllItemsToDest('#multiselect_left', '#multiselect_right');
+        });
+
+        $('#multiselect_move_up').click(function () {
+            moveUp('#multiselect_right');
+        });
+
+        $('#multiselect_move_down').click(function () {
+            moveDown('#multiselect_right');
+        });
+    });
+
+    function moveItemsToRight(sourseSelect, destSelect) { // move selected items from left to right select list
+        $(destSelect).append($(sourseSelect + ' option:selected').clone());
+        $(sourseSelect + ' option:selected').css("display", "none").removeAttr("selected");
+    }
+
+    function moveItemsToLeft(sourseSelect, destSelect) { // move back selected items from right to left select list
+        $(destSelect + " option:selected").each(function () {
+            $(sourseSelect + ' option[value=' + $(this).val() + ']').show().removeAttr("selected");
+            $(this).remove();
+        });
+    }
+
+    function moveAllItemsToDest(sourseSelect, destSelect) { // move all items from left to right select list
+        $(destSelect).append($(sourseSelect + ' option').clone());
+        $(sourseSelect + ' option').css("display", "none").removeAttr("selected");
+        $(destSelect + ' option').filter(function () {
+            if ($(this).css("display") == "none") {
+                $(this).remove();
+            }
+
+        });
+    }
+
+    function moveAllItemsToSource(sourseSelect, destSelect) { // move back all available items from right to left select list
+        $(sourseSelect + ' option').show().removeAttr("selected");
+        $(destSelect + ' option').remove();
+    }
+
+    function moveUp(destSelect) { // move selected items one step up in right select list
+        var op = $(destSelect + ' option:selected');
+        op.first().prev().before(op);
+    }
+
+    function moveDown(destSelect) { // move selected items one step down in right select list
+        var op = $(destSelect + ' option:selected');
+        op.last().next().after(op);
+    }
+</script>

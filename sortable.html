@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>jQuery UI Sortable - Handle empty lists</title>
+  <link rel="stylesheet" href="https//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <style>
+  #sortable1, #sortable2, #sortable3 { list-style-type: none; margin: 0; float: left; margin-right: 10px; background: #eee; padding: 5px; width: 143px;}
+  #sortable1 li, #sortable2 li, #sortable3 li { margin: 5px; padding: 5px; font-size: 1.2em; width: 120px; }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "ul.droptrue" ).sortable({
+      connectWith: "ul"
+    });
+ 
+    $( "ul.dropfalse" ).sortable({
+      connectWith: "ul",
+      dropOnEmpty: false
+    });
+ 
+    $( "#sortable1, #sortable2, #sortable3" ).disableSelection();
+  } );
+  </script>
+</head>
+<body>
+ 
+<ul id="sortable1" class="droptrue">
+  <li class="ui-state-default">Can be dropped..</li>
+  <li class="ui-state-default">..on an empty list</li>
+  <li class="ui-state-default">Item 3</li>
+  <li class="ui-state-default">Item 4</li>
+  <li class="ui-state-default">Item 5</li>
+  <li class="ui-state-default">Item 6</li>
+  <li class="ui-state-default">Item 7</li>
+  <li class="ui-state-default">Item 8</li>
+  <li class="ui-state-default">Item 9</li>
+  <li class="ui-state-default">Item 10</li>
+  <li class="ui-state-default">Item 11</li>
+  <li class="ui-state-default">Item 12</li>
+  <li class="ui-state-default">Item 13</li>
+  <li class="ui-state-default">Item 14</li>
+  <li class="ui-state-default">Item 15</li>
+  <li class="ui-state-default">Item 16</li>
+  <li class="ui-state-default">Item 17</li>
+</ul>
+ 
+<ul id="sortable2" class="dropfalse">
+    <li class="ui-state-highlight">Cannot be dropped..</li>
+    <li class="ui-state-highlight">..on an empty list</li>
+    <li class="ui-state-highlight">Item 3</li>
+    <li class="ui-state-highlight">Item 4</li>
+    <li class="ui-state-highlight">Item 5</li>
+</ul>
+ 
+<ul id="sortable3" class="droptrue">
+</ul>
+ 
+<br style="clear:both">
+ 
+ 
+</body>
+</html>

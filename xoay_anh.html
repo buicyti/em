@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .gallery {
+            ---s: 280px;
+            display: grid;
+            width: var(---s);
+            aspect-ratio: 1;
+            overflow: hidden;
+            padding: calc(var(---s)/20);
+            border-radius: 50%;
+            position: relative;
+            clip-path: circle(49.5%);
+        }
+
+        .gallery::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            padding: inherit;
+            border-radius: inherit;
+            /* background: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c); */
+            z-index: -1;
+            background: repeating-conic-gradient(#3f87a6 0 30deg, #f69d3c 0 60deg);
+            -webkit-mask:
+                linear-gradient(#fff 0 0) content-box,
+                linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+
+        }
+
+        .gallery>img {
+            grid-area: 1/1;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: inherit;
+            transform-origin: 50% 120.7%;
+        }
+
+        .gallery::after,
+        .gallery>img {
+            animation: m 8s infinite cubic-bezier(0.5, -0.2, 0.5, 1.2);
+        }
+
+        .gallery>img:nth-child(2) {
+            animation-delay: -2s;
+        }
+
+        .gallery>img:nth-child(3) {
+            animation-delay: -4s;
+        }
+
+        .gallery>img:nth-child(4) {
+            animation-delay: -6s;
+        }
+
+        @keyframes m {
+
+            0%,
+            5% {
+                transform: rotate(0);
+            }
+
+            22%,
+            27% {
+                transform: rotate(-90deg);
+            }
+
+            47%,
+            52% {
+                transform: rotate(-180deg);
+            }
+
+            72%,
+            77% {
+                transform: rotate(-270deg);
+            }
+
+            90%,
+            100% {
+                transform: rotate(-360deg);
+            }
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: grid;
+            place-content: center;
+            background: #c2cbce;
+        }
+    </style>
+</head>
+
+<body>
+
+    <thead>
+        <tr>
+            <th rowspan="2">Line</th>
+            <th rowspan="2">Machine</th>
+            <th rowspan="2">Asset</th>
+            <th rowspan="2">Model</th>
+            <th rowspan="2">Serial No.</th>
+            <th rowspan="2">Version MMI</th>
+            <th rowspan="2">Stencil size</th>
+            <th rowspan="2">Pass lane</th>
+            <th rowspan="2">Base block Height</th>
+            <th rowspan="2">SQZ size</th>
+            <th rowspan="2">Auto solder</th>
+            <th rowspan="2">Fix lane</th>
+            <th rowspan="2">Mfg Date</th>
+            <th rowspan="2">Marker</th>
+            <th colspan="7">PC</th>
+            <th rowspan="2">PCB size</th>
+            <th rowspan="2">Machine Size</th>
+            <th rowspan="2">Power</th>
+        </tr>
+        <tr>
+            <th>CPU</th>
+            <th>RAM</th>
+            <th>Disk Type</th>
+            <th>Windows Version</th>
+            <th>Service pack</th>
+            <th>IP</th>
+            <th>MAC</th>
+        </tr>
+        <thead></thead>
+        <div class="gallery">
+            <img
+                src="https://ephoto360.com/uploads/worigin/2019/12/12/tao_avatar_anh_dong_tet5df1f031882cb_c2a0af136c71ee0231448399d29c6bda.jpg" />
+            <img src="https://i.pinimg.com/originals/a0/f1/c1/a0f1c1b4ec369ec72363adea5046967d.jpg" />
+            <img src="https://thiepmung.com/uploads/worigin/2022/09/09/khung-anh-tet-2023_015ef.jpg" />
+            <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXclPXvR7OxIlAMr2AjEoYxlK_A04MYSffCA&usqp=CAU" />
+        </div>
+</body>
+
+</html>

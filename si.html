@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tesst</title>
+	<!-- Liên kết Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/bootstrap/bootstrap-icons/bootstrap-icons.css">
+    <style>
+        :root{
+            --cui-sidebar-width: 16rem;
+            --cui-sidebar-width-litle: 4rem;
+            --select-tool-width: 12rem;
+        }
+        body{
+            overflow: auto;
+        }
+        #sidebar {
+            height: 100vh;
+            width: var(--cui-sidebar-width);
+            background: linear-gradient(180deg, rgb(145, 209, 62) 0%, rgb(240, 236, 221) 100%);
+            color: rgba(255, 255, 255, 0.87);
+        }
+        .top-main {
+            background: linear-gradient(45deg, rgb(145, 209, 62), rgb(219, 241, 190));
+            height: 60px!important;
+            overflow: hidden;
+            z-index: 10;
+        }
+        .header-toggler {
+            padding: .25rem .75rem;
+            font-size: 1.75rem;
+            color: rgba(44, 56, 74, 0.6);
+            background-color: transparent;
+            border: 0;
+            border-radius: .25rem
+        }
+
+        .header-toggler:hover {
+            color: rgba(44, 56, 74, .95);
+            text-decoration: none
+        }
+        .main {
+            display: block;
+            height: calc(100vh - 60px);
+            overflow-x: auto;
+        }
+        .mainInner{
+            display: table;
+            height: 100%;
+            width: 100%;
+            text-align: center;
+        }
+        .mainInner div{
+            display:table-cell;
+            vertical-align: middle;
+            font-size: 3em;
+            font-weight: bold;
+            letter-spacing: 1.25px;
+        }
+
+
+
+        @media only screen and (max-width: 1400px){
+            #sidebar {
+                width: var(--cui-sidebar-width-litle);
+            }
+            #sidebar:hover{
+                width: 16rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-auto" id="sidebar">
+                sidebar xịn
+            </div>
+            <div class="col">
+                <div class="row top-main">
+                    <div class="d-flex align-items-center">
+                        <div class=""><button class="header-toggler" type="button"><i class="bi bi-justify"></i></button></div>
+                        <div class="mx-4">Flex item 2</div>
+                        <div class="ms-auto">Flex item 3</div>
+                      </div>
+                </div>
+                <div class="row main">
+                    main ở đây
+                    <div class="mainInner">
+                        <div>PURE CSS SIDEBAR TOGGLE MENU</div>
+                      </div>
+                      <div class="mainInner">
+                        <div>PURE CSS SIDEBAR TOGGLE MENU</div>
+                      </div>
+                      <div class="mainInner">
+                        <div>PURE CSS SIDEBAR TOGGLE MENU</div>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="assets/jquery/jquery-3.6.0.min.js"></script>
+<script>
+    $('.header-toggler').on('click', function () {
+        /* if ($('.sidebar').css("display") === "none")  $('.sidebar').css("display", "block")
+        else  $('.sidebar').css("display", "none") */
+        $('#sidebar').toggle()
+
+}); // ẩn/hiện thanh sidebar
+</script>
+</html>
